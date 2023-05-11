@@ -6,56 +6,81 @@
 #include<string>
 #include<Windows.h>
 
-class figure
+class Figure
 {
-public:
-	figure()
+public:	
+	Figure():Figure(quantity)
 	{
-		quantity = 0;
-		str = "Фигура: 0";
+
 	}
-
-	figure(int quantity)
+	Figure(int quantity)
 	{
-		this->quantity = quantity;
-
-	    if (quantity == 3)
+		if ((quantity == 3) || (quantity == 4))
 		{
-			str = "Треугольник: 3";
+			this->quantity = quantity;
 		}
-		else if (quantity == 4)
-		{
-			str = "Четырёхугольник: 4";
-		}
-		else str = "Такой фигуры нет.";
-	}
 
-	std::string get_figure()const
+    }
+
+	int get_quantity()const
 	{
-		return str;
+		return quantity;
 	}
-
 private:
 
 	int quantity = 0;    // количество сторон
-	std::string str;     // строка вывода сообщения на консоль
 
 };
 
+class Triangle: public Figure
+{
+public:
+	Triangle(int a) :Figure(a)
+	{
+
+	}
+
+};
+
+class Quadrangle: public Figure
+{
+public:
+	Quadrangle(int a) :Figure(a)
+	{
+
+	}
+
+};
+
+
+void Print(int a)
+{
+	if (a == 0)
+	{
+		std::cout << "Фигура  " << a << std::endl;
+	}
+	else if (a == 3)
+	{
+		std::cout << "Треугольник  " << a << std::endl;
+	}
+	else if (a == 4)
+	{
+		std::cout << "Четырехугольник  " << a << std::endl;
+	}
+}
 int main() {
 
 	setlocale(LC_ALL, "Russoan");
 
 	SetConsoleOutputCP(1251);   // кодировка для корректного отображения русской раскладки
 
-	figure p;
-	std::cout << p.get_figure() << std::endl;
-	figure o(3);
-	std::cout << o.get_figure() << std::endl;
-	figure i(4);
-	std::cout << i.get_figure() << std::endl;
-	figure u(5);
-	std::cout << u.get_figure() << std::endl;
+	Figure p;
+	Print (p.get_quantity());
+	Triangle r(3);
+	Print(r.get_quantity());
+	Quadrangle e(4);
+	Print(e.get_quantity());
+
 
 
 }
