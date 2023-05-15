@@ -22,10 +22,24 @@ public:
 
     }
 
-	int get_quantity()const
+	void print()
 	{
-		return quantity;
+
+		if (quantity == 0)
+		{
+			std::cout << "Фигура  " << quantity << std::endl;
+		}
+		else if (quantity == 3)
+		{
+			std::cout << "Треугольник  " << quantity << std::endl;
+		}
+		else if (quantity == 4)
+		{
+			std::cout << "Четырехугольник  " << quantity << std::endl;
+		}
 	}
+
+	
 private:
 
 	int quantity = 0;    // количество сторон
@@ -53,21 +67,7 @@ public:
 };
 
 
-void Print(int a)
-{
-	if (a == 0)
-	{
-		std::cout << "Фигура  " << a << std::endl;
-	}
-	else if (a == 3)
-	{
-		std::cout << "Треугольник  " << a << std::endl;
-	}
-	else if (a == 4)
-	{
-		std::cout << "Четырехугольник  " << a << std::endl;
-	}
-}
+
 int main() {
 
 	setlocale(LC_ALL, "Russoan");
@@ -75,11 +75,11 @@ int main() {
 	SetConsoleOutputCP(1251);   // кодировка для корректного отображения русской раскладки
 
 	Figure p;
-	Print (p.get_quantity());
+	p.print();
 	Triangle r(3);
-	Print(r.get_quantity());
+	r.print();
 	Quadrangle e(4);
-	Print(e.get_quantity());
+	e.print();
 
 
 
